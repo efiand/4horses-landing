@@ -1,0 +1,32 @@
+.marquee {
+	--height: 38px;
+	--position: var(--mobile-width);
+
+	min-height: var(--height);
+	color: $color-white;
+	background-color: $color-red;
+	background-image: var(--image);
+	background-position-y: 50%;
+	background-size: var(--position) 46px;
+
+	@include motions {
+		animation: marquee 30s linear infinite;
+	}
+
+	@include tablet-desktop {
+		--height: 60px;
+		--position: var(--width);
+
+		background-size: var(--position) var(--height);
+	}
+}
+
+@keyframes marquee {
+	from {
+		background-position-x: var(--position);
+	}
+
+	to {
+		background-position-x: 0;
+	}
+}

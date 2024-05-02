@@ -1,0 +1,64 @@
+@mixin mobile {
+	@media (max-width: 767px) {
+		@content;
+	}
+}
+
+@mixin tablet-mobile {
+	@media (max-width: 1261px) {
+		@content;
+	}
+}
+
+@mixin tablet-desktop {
+	@media (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: 1262px) {
+		@content;
+	}
+}
+
+@mixin motions {
+	@media (prefers-reduced-motion: no-preference) {
+		@content;
+	}
+}
+
+@mixin container {
+	padding-right: 20px;
+	padding-left: 20px;
+
+	@include desktop {
+		padding-right: calc(50% - 611px);
+		padding-left: calc(50% - 611px);
+	}
+}
+
+@mixin mask($icon) {
+	mask: var(--icon-#{$icon}) no-repeat center / 100%;
+}
+
+@mixin vertical-delimiter {
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -15px;
+		bottom: -15px;
+		width: 2px;
+		background-color: $color-gray-light;
+	}
+
+	&--first::before {
+		top: 0;
+	}
+
+	&--last::before {
+		bottom: 0;
+	}
+}

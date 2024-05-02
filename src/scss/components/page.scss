@@ -1,0 +1,11 @@
+.page__marquee {
+	margin: 0;
+
+	&--last {
+		margin-top: 40px;
+
+		@include tablet-desktop {
+			margin-top: -2px;
+		}
+	}
+}

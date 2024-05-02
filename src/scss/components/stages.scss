@@ -1,0 +1,94 @@
+.stages {
+	position: relative;
+	padding-top: 148px;
+	counter-reset: stages;
+
+	@include tablet-desktop {
+		padding-top: 54px;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 4px;
+		right: 0;
+		left: 0;
+		z-index: 1;
+		height: 220px;
+		background-image: url('/img/plane.webp');
+		background-repeat: no-repeat;
+		background-position: 50%;
+		background-size: contain;
+		pointer-events: none;
+
+		@include tablet-desktop {
+			inset: auto -63px -2px auto;
+			width: 401px;
+			height: 235px;
+		}
+	}
+}
+
+.stages__text {
+	position: relative;
+	min-height: 36px;
+	margin: 0;
+	padding-left: 52px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 22px;
+	counter-increment: stages;
+
+	@include tablet-desktop {
+		padding: 20px 22px 20px 72px;
+		font-size: 20px;
+		line-height: 1.2;
+		background: inherit;
+	}
+
+	& + & {
+		@include mobile {
+			margin-top: 28px;
+		}
+	}
+
+	&::before {
+		content: counter(stages);
+		position: absolute;
+		top: 0;
+		left: 0;
+		box-sizing: border-box;
+		min-width: 36px;
+		padding: 6px;
+		font-size: 20px;
+		line-height: 1.2;
+		text-align: center;
+		background-color: $color-white;
+		border-radius: 50%;
+
+		@include tablet-desktop {
+			top: 20px;
+			left: 20px;
+		}
+	}
+}
+
+.stages__item {
+	box-sizing: border-box;
+	padding: 62px 20px 34px;
+	background-color: $color-wheat;
+	background-image: url('/img/back.webp');
+
+	@include tablet-desktop {
+		display: contents;
+
+		&:nth-child(2) .stages__text {
+			grid-row: span 2;
+		}
+
+		&:last-child .stages__text:last-child {
+			grid-column: span 2;
+			padding-right: 320px;
+		}
+	}
+}

@@ -1,0 +1,68 @@
+.params__item {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin: 0 0 15px;
+
+	& + & {
+		padding-top: 15px;
+		border-top: 2px solid $color-gray-light;
+	}
+
+	@include tablet-desktop {
+		display: grid;
+		grid-template-columns: 306px 1fr;
+		gap: 0;
+	}
+}
+
+.params__key {
+	color: rgba($color-black-light, 0.7);
+
+	@include tablet-desktop {
+		padding-right: 15px;
+
+		@include vertical-delimiter;
+
+		&::before {
+			right: -1px;
+		}
+	}
+}
+
+.params__value {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin: 0;
+	font-weight: 600;
+
+	@include tablet-desktop {
+		padding-left: 16px;
+
+		@include vertical-delimiter;
+
+		&::before {
+			left: -1px;
+		}
+	}
+
+	del {
+		position: relative;
+		text-decoration: none;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 13px;
+			right: -2px;
+			left: -2px;
+			height: 2px;
+			background-color: $color-red;
+		}
+	}
+
+	ins {
+		text-decoration: none;
+	}
+}

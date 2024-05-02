@@ -1,0 +1,156 @@
+.slider {
+	@include desktop {
+		position: relative;
+	}
+}
+
+.slider__wrapper {
+	overflow-x: hidden;
+}
+
+.slider__list {
+	display: flex;
+	margin: 0 0 28px;
+	padding-inline: 10px;
+	list-style: none;
+	transform: translateX(var(--offset, 0));
+
+	@include motions {
+		transition: transform var(--time, 0.2s) ease-in-out;
+	}
+
+	@include desktop {
+		padding-inline: 0;
+	}
+
+	li {
+		flex-shrink: 0;
+		width: var(--slide-width);
+		margin: 0 10px;
+	}
+}
+
+.slider__button {
+	position: relative;
+	padding: 18px;
+	background-color: $color-black-light;
+	border-radius: 50%;
+
+	@include motions {
+		transition: $transition-default;
+		transition-property: background-color;
+	}
+
+	@include tablet-desktop {
+		padding: 22px;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-color: $color-white;
+
+		@include mask('chevron');
+	}
+
+	&:hover {
+		background-color: $color-yellow;
+	}
+
+	&:disabled {
+		background-color: $color-gray-lighter;
+		cursor: not-allowed;
+	}
+
+	&--prev {
+		&::before {
+			transform: scaleX(-1);
+		}
+	}
+}
+
+.slider__panel {
+	display: flex;
+	gap: 14px;
+	justify-content: center;
+	align-items: center;
+
+	@include desktop {
+		position: absolute;
+		right: 0;
+		bottom: 100%;
+		margin-bottom: 11px;
+	}
+}
+
+.slider__pagination {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.slider__dot {
+	display: block;
+	padding: 5px;
+	background-color: $color-gray-lightest;
+	background-clip: padding-box;
+	border: 3px solid transparent;
+	border-radius: 50%;
+
+	&--current,
+	&:hover {
+		background-color: $color-black-light;
+	}
+}
+
+.slider__counter {
+	display: flex;
+	justify-content: center;
+	gap: 2px;
+	min-width: 31px;
+	margin: 0;
+	font-size: 16px;
+	line-height: 20px;
+	color: rgba($color-black-light, 0.6);
+
+	@include tablet-desktop {
+		gap: 4px;
+		min-width: 35px;
+	}
+}
+
+.slider__current {
+	color: $color-black-light;
+}
+
+.slider:has(.slider__pagination) {
+	.slider__list {
+		@include tablet-desktop {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 20px;
+			margin: 0;
+			padding: 0;
+			transform: none;
+
+			li {
+				width: auto;
+				margin: 0;
+			}
+		}
+
+		@include desktop {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.slider__panel {
+		@include tablet-desktop {
+			display: none;
+		}
+	}
+}

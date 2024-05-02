@@ -1,0 +1,62 @@
+.participants {
+	@include tablet-desktop {
+		padding-top: 60px;
+	}
+}
+
+.participants__portrait {
+	position: relative;
+	width: 244px;
+	margin: 0 auto 28px;
+	border-radius: 50%;
+
+	@include tablet-desktop {
+		width: 320px;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-color: $color-wheat;
+		background-image: var(--icon-person), url('/img/back.webp');
+		background-repeat: no-repeat, repeat;
+		background-position: 50% 100%, 0 0;
+		background-size: 100%, auto;
+		border-radius: 50%;
+		pointer-events: none;
+
+		@include motions {
+			transition: opacity $transition-default;
+		}
+	}
+}
+
+.participants__image {
+	display: block;
+	border-radius: 50%;
+}
+
+.participants__item {
+	padding-bottom: 20px;
+	text-align: center;
+
+	&:hover,
+	&:focus-within {
+		.participants__portrait::before {
+			opacity: 0;
+		}
+	}
+}
+
+.participants__name {
+	margin: 0 0 8px;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 29px;
+}
+
+.participants__description {
+	margin: 0 0 23px;
+	color: rgba($color-black-light, 0.6);
+}

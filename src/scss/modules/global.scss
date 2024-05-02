@@ -1,0 +1,39 @@
+body {
+	@each $icon in ('chevron', 'person', 'slogans') {
+		--icon-#{$icon}: url('../icons/#{$icon}.svg');
+	}
+
+	min-width: 320px;
+	margin: 0;
+	overflow-x: hidden;
+	font-size: 20px;
+	line-height: 1.2;
+	font-family: $font-base;
+	color: $color-black-light;
+}
+
+a {
+	color: inherit;
+	text-decoration-skip-ink: none;
+}
+
+button {
+	margin: 0; // Safari
+	font-family: inherit;
+	border: none;
+	cursor: pointer;
+	user-select: none;
+}
+
+a,
+button {
+	@include motions {
+		transition: $transition-default;
+		transition-property: color, background-color, border-color;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}

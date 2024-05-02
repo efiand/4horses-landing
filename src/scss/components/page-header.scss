@@ -1,0 +1,74 @@
+.page-header {
+	min-height: 738px;
+	padding-block: 18px;
+	background-color: $color-wheat;
+	background-image: url('/img/front.webp'), url('/img/back.webp');
+	background-repeat: no-repeat, repeat;
+	background-position: right -100px bottom 0, 0 0;
+	background-size: auto 400px, auto;
+
+	@include container;
+
+	@include tablet-desktop {
+		min-height: 648px;
+		padding-block: 26px;
+		background-position: left calc(50% + 12px) bottom -7px, 0 0;
+		background-size: auto;
+	}
+}
+
+.page-header__logo {
+	margin-bottom: 36px;
+
+	@include tablet-desktop {
+		width: 245px;
+		margin-bottom: 56px;
+	}
+}
+
+.page-header__promo {
+	max-width: 542px;
+	margin: 0 0 23px;
+	font-size: 36px;
+	line-height: 40px;
+	font-family: $font-accent;
+	text-transform: uppercase;
+
+	@include tablet-desktop {
+		margin-bottom: 25px;
+		font-size: 60px;
+		line-height: 66px;
+	}
+
+	span {
+		display: block;
+		text-align: center;
+
+		+ span {
+			text-align: right;
+		}
+	}
+}
+
+.page-header__text {
+	max-width: 542px;
+	margin: 0 0 33px;
+	font-size: 18px;
+	line-height: 23px;
+
+	@include tablet-desktop {
+		margin-bottom: 40px;
+		text-align: center;
+	}
+}
+
+.page-header__buttons {
+	display: grid;
+	gap: 14px;
+	max-width: 542px;
+
+	@include tablet-desktop {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+	}
+}

@@ -1,0 +1,26 @@
+.hidden {
+	display: none;
+}
+
+.visually-hidden {
+	position: fixed;
+	transform: scale(0);
+}
+
+.no-mobile {
+	@include mobile {
+		display: none;
+	}
+}
+
+.no-desktop {
+	@include desktop {
+		display: none;
+	}
+}
+
+.desktop {
+	@include tablet-mobile {
+		display: none;
+	}
+}
